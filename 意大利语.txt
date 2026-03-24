@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="意大利语">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2a3d36">
+<meta name="description" content="意大利语入门词汇学习 · 音标 · 发音 · 9个场景">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%232a3d36'/%3E%3Ctext x='90' y='120' font-size='100' text-anchor='middle'%3E%F0%9F%87%AE%F0%9F%87%B9%3C/text%3E%3C/svg%3E">
+<title>🇮🇹 意大利语入门</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+const manifest = {
+  name: "意大利语入门词汇",
+  short_name: "意大利语",
+  description: "意大利语入门词汇学习 · 音标 · 发音 · 9个场景",
+  start_url: "./",
+  display: "fullscreen",
+  orientation: "portrait",
+  background_color: "#1a0a05",
+  theme_color: "#1a0a05",
+  icons: [{
+    src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%231a0a05'/%3E%3Ctext x='256' y='340' font-size='300' text-anchor='middle'%3E%F0%9F%87%AE%F0%9F%87%B9%3C/text%3E%3C/svg%3E",
+    sizes: "512x512", type: "image/svg+xml", purpose: "any maskable"
+  }]
+};
+const blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
+const url = URL.createObjectURL(blob);
+const l = document.createElement('link');
+l.rel = 'manifest'; l.href = url;
+document.currentScript.parentNode.insertBefore(l, document.currentScript);
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+:root {
+–white:        #FBF1D7;
+–white-pure:   #FDF6E8;
+–bg:           #2a3d36;
+–wasong:       #6F9986;
+–meizi:        #718771;
+–honey:        #FFD9A3;
+–honey-dim:    rgba(255,217,163,0.55);
+–coral:        #FFA6A0;
+–apple:        #73AE52;
+–card-bg:      rgba(251,241,215,0.07);
+–card-border:  rgba(251,241,215,0.13);
+}
+
+html, body { height: 100%; overflow: hidden; background: #2a3d36; font-family: ‘DM Sans’, -apple-system, sans-serif; color: #FBF1D7; }
+
+body::before {
+content: ‘’; position: fixed; inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.75’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.035’/%3E%3C/svg%3E”);
+pointer-events: none; z-index: 999;
+}
+
+#app {
+display: flex; flex-direction: column;
+height: 100%; height: 100dvh;
+max-width: 480px; margin: 0 auto;
+position: relative; overflow: hidden;
+padding-top: env(safe-area-inset-top);
+}
+
+/* TOP NAV */
+#topnav { flex-shrink: 0; display: flex; align-items: center; padding: 12px 18px 8px; gap: 10px; }
+#nav-flag { font-size: 1.35rem; }
+#nav-title { font-family: ‘Playfair Display’, Georgia, serif; font-size: 1rem; font-weight: 700; color: #6F9986; }
+#autoplay-ring { margin-left: auto; width: 34px; height: 34px; opacity: 0; transition: opacity 0.3s; flex-shrink: 0; }
+#autoplay-ring.visible { opacity: 1; }
+#autoplay-ring svg circle { stroke: #FFD9A3; stroke-dasharray: 88; stroke-dashoffset: 88; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset linear; }
+
+/* DOTS */
+#dots-row { flex-shrink: 0; display: flex; justify-content: center; gap: 6px; padding: 0 20px 8px; }
+.dot { height: 6px; width: 6px; border-radius: 3px; background: rgba(255,255,255,0.18); cursor: pointer; transition: background 0.3s, width 0.3s; }
+.dot.active { background: #FFA6A0; width: 22px; }
+
+/* STAGE */
+#stage-wrap { flex: 1; overflow: hidden; position: relative; min-height: 0; }
+
+.scene {
+position: absolute; inset: 0;
+display: flex; flex-direction: column;
+padding: 4px 14px 10px;
+opacity: 0; transform: translateX(50px);
+transition: opacity 0.42s cubic-bezier(.22,1,.36,1), transform 0.42s cubic-bezier(.22,1,.36,1);
+pointer-events: none; overflow: hidden;
+}
+.scene.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.scene.exit-left  { opacity: 0; transform: translateX(-50px); }
+.scene.exit-right { opacity: 0; transform: translateX(50px); }
+.scene::before {
+content: ‘’; position: absolute; width: 280px; height: 280px;
+border-radius: 50%; right: -80px; bottom: -60px;
+opacity: 0.12; background: #FFD9A3; pointer-events: none;
+}
+
+.scene-greeting { background: linear-gradient(155deg, #3d5c50 0%, #243830 100%); }
+.scene-chat     { background: linear-gradient(155deg, #3a5848 0%, #223428 100%); }
+.scene-intro    { background: linear-gradient(155deg, #3e5c4e 0%, #263a2e 100%); }
+.scene-family   { background: linear-gradient(155deg, #415e50 0%, #283c30 100%); }
+.scene-food     { background: linear-gradient(155deg, #3c5a4a 0%, #24382c 100%); }
+.scene-grammar  { background: linear-gradient(155deg, #3a5a4c 0%, #223630 100%); }
+.scene-pronoun  { background: linear-gradient(155deg, #3e5c52 0%, #263a32 100%); }
+.scene-places   { background: linear-gradient(155deg, #364e42 0%, #213020 100%); }
+.scene-study    { background: linear-gradient(155deg, #3a4e5c 0%, #223040 100%); }
+
+.scene-header { display: flex; align-items: center; gap: 8px; padding: 8px 0 6px; flex-shrink: 0; }
+.scene-icon { font-size: 1.5rem; line-height: 1; }
+.scene-category { font-family: ‘Playfair Display’, Georgia, serif; font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; }
+.scene-num { margin-left: auto; font-size: 0.65rem; opacity: 0.3; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* VOCAB GRID */
+.vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; flex: 1; align-content: start; overflow-y: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; min-height: 0; }
+.vocab-grid::-webkit-scrollbar { display: none; }
+
+.vocab-card {
+background: rgba(251,241,215,0.07); border: 1px solid rgba(251,241,215,0.13);
+border-radius: 13px; padding: 12px 12px 11px;
+display: flex; flex-direction: column; gap: 3px;
+cursor: pointer; position: relative; overflow: hidden;
+animation: cardIn 0.38s cubic-bezier(.22,1,.36,1) both;
+transition: background 0.15s, border-color 0.15s;
+-webkit-user-select: none; user-select: none;
+min-height: 80px;
+}
+.vocab-card:active { background: rgba(255,255,255,0.13); }
+.vocab-card.speaking { border-color: #FFA6A0; background: rgba(255,166,160,0.12); }
+
+/* PRONOUN PAIR CARD */
+.vocab-card.pair-card {
+grid-column: span 2;
+flex-direction: row;
+align-items: stretch;
+gap: 0;
+padding: 0;
+overflow: hidden;
+}
+.pair-half {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 3px;
+padding: 10px 10px 9px;
+cursor: pointer;
+transition: background 0.15s;
+position: relative;
+min-height: 72px;
+}
+.pair-half:first-child {
+border-right: 1px solid rgba(255,255,255,0.09);
+}
+.pair-half:active { background: rgba(255,255,255,0.1); }
+.pair-half.speaking { background: rgba(255,166,160,0.12); }
+.pair-label {
+font-size: 0.56rem;
+letter-spacing: 0.08em;
+margin-top: 3px;
+}
+.pair-label.masc  { color: #7bb8e8; }
+.pair-label.fem   { color: #f0a0c0; }
+.pair-label.first-p  { color: #a0d4a0; }
+.pair-label.second-p { color: #ffd080; }
+
+.pair-half .vocab-it { padding-right: 0; font-size: 0.9rem; }
+.pair-half .vocab-pron { font-size: 0.58rem; }
+.pair-half .vocab-zh { font-size: 0.67rem; }
+
+/* ALLORA CARD */
+.vocab-card.allora-card {
+grid-column: span 2;
+background: rgba(255,217,163,0.13);
+border-color: rgba(255,217,163,0.4);
+flex-direction: column;
+gap: 2px;
+padding: 10px 14px 9px;
+}
+.allora-emoji { display: none; }
+.allora-content { width: 100%; display: flex; flex-direction: column; gap: 2px; }
+.allora-row1 { display: flex; align-items: baseline; gap: 10px; }
+.allora-row1 .vocab-it  { color: #FFD9A3; font-size: 0.95rem; padding-right: 0; flex-shrink: 0; }
+.allora-row1 .vocab-zh  { color: #FBF1D7; opacity: 0.65; font-size: 0.7rem; font-weight: 300; }
+.allora-content .vocab-pron { color: rgba(255,217,163,0.65); font-size: 0.6rem; }
+.allora-emoji { font-size: 1.4rem; flex-shrink: 0; }
+.allora-content { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+
+/* FANTASTICO CARD */
+.vocab-card.fantastico-card {
+grid-column: span 2;
+background: rgba(255,166,160,0.15);
+border-color: rgba(255,166,160,0.45);
+flex-direction: column;
+gap: 2px;
+padding: 10px 14px 9px;
+}
+.fantastico-card .vocab-it   { color: #FFA6A0; font-size: 1.05rem; padding-right: 0; }
+.fantastico-card .vocab-pron { color: rgba(255,166,160,0.65); font-size: 0.62rem; }
+.fantastico-card .vocab-zh   { color: #FBF1D7; opacity: 0.65; font-size: 0.7rem; }
+
+@keyframes cardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.speak-badge { position: absolute; top: 7px; right: 8px; font-size: 0.6rem; opacity: 0.28; transition: opacity 0.15s; }
+.vocab-card.speaking .speak-badge { opacity: 1; animation: pulse 0.5s ease-in-out infinite alternate; }
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.5); } }
+
+.ripple { position: absolute; border-radius: 50%; background: rgba(255,166,160,0.3); transform: scale(0); animation: rippleOut 0.55s ease-out forwards; pointer-events: none; }
+@keyframes rippleOut { to { transform: scale(5); opacity: 0; } }
+
+.vocab-it { font-family: ‘Playfair Display’, Georgia, serif; font-style: italic; font-size: 1rem; color: #FFD9A3; line-height: 1.35; padding-right: 14px; }
+.vocab-pron { font-size: 0.62rem; color: rgba(205,237,222,0.7); letter-spacing: 0.025em; line-height: 1.3; }
+.vocab-zh { font-size: 0.72rem; color: #FBF1D7; opacity: 0.55; font-weight: 300; margin-top: 1px; }
+
+/* EXAMPLE BOX */
+.example-box { flex-shrink: 0; background: rgba(251,241,215,0.04); border-left: 3px solid #FFA6A0; border-radius: 0 12px 12px 0; overflow: hidden; margin-top: 7px; }
+.ex-line { display: flex; align-items: center; gap: 8px; padding: 8px 12px 8px 13px; cursor: pointer; transition: background 0.14s; -webkit-user-select: none; user-select: none; }
+.ex-line + .ex-line { border-top: 1px solid rgba(251,241,215,0.08); }
+.ex-line:active, .ex-line.speaking { background: rgba(255,166,160,0.1); }
+.ex-line-text { flex: 1; min-width: 0; }
+.ex-line-text .it { font-family: ‘Playfair Display’, Georgia, serif; font-style: italic; color: #FFD9A3; font-size: 0.8rem; line-height: 1.4; }
+.ex-line-text .zh { font-size: 0.68rem; opacity: 0.45; margin-top: 1px; line-height: 1.3; }
+.ex-speak-btn { font-size: 0.78rem; flex-shrink: 0; opacity: 0.38; }
+.ex-line.speaking .ex-speak-btn { opacity: 1; animation: pulse 0.5s ease-in-out infinite alternate; }
+
+/* SECTION LABEL CARD */
+.vocab-card.section-label {
+grid-column: span 2;
+background: rgba(255,217,163,0.08);
+border-color: rgba(255,217,163,0.22);
+flex-direction: row;
+align-items: center;
+gap: 8px;
+padding: 7px 12px;
+}
+.section-label .label-badge {
+font-size: 0.65rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+color: #FFD9A3;
+background: rgba(255,217,163,0.15);
+border-radius: 6px;
+padding: 2px 8px;
+flex-shrink: 0;
+}
+.section-label .label-note { font-size: 0.65rem; color: rgba(251,241,215,0.45); }
+.vocab-card .special-tag {
+position: absolute; top: 6px; right: 22px;
+font-size: 0.55rem; color: #FFA6A0; font-weight: 600; letter-spacing: 0.05em;
+}
+.vocab-card.ce-card {
+grid-column: span 2;
+background: rgba(111,153,134,0.18);
+border-color: rgba(111,153,134,0.35);
+flex-direction: column; gap: 3px; padding: 10px 13px;
+}
+.ce-card .vocab-it   { color: #FFD9A3; font-size: 1rem; padding-right: 0; }
+.ce-card .vocab-pron { color: rgba(255,217,163,0.62); }
+.ce-card .vocab-zh   { color: #FBF1D7; opacity: 0.65; font-size: 0.7rem; }
+
+/* CON CARD */
+.vocab-card.con-card {
+grid-column: span 2;
+background: rgba(160,212,160,0.1);
+border-color: rgba(160,212,160,0.3);
+flex-direction: row;
+align-items: center;
+gap: 12px;
+padding: 10px 14px;
+}
+.con-card .vocab-it   { color: #a0d4a0; font-size: 1rem; padding-right: 0; flex-shrink: 0; }
+.con-card .con-detail { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.con-card .vocab-pron { color: rgba(160,212,160,0.65); font-size: 0.6rem; }
+.con-card .vocab-zh   { color: #FBF1D7; opacity: 0.6; font-size: 0.68rem; }
+
+/* GRAMMAR NOTE */
+.grammar-note {
+flex-shrink: 0;
+background: rgba(111,153,134,0.18);
+border: 1px solid rgba(111,153,134,0.32);
+border-radius: 10px;
+padding: 8px 12px;
+margin-top: 6px;
+font-size: 0.69rem;
+line-height: 1.6;
+color: rgba(251,241,215,0.68);
+}
+.grammar-note strong { color: #FFD9A3; opacity: 1; }
+
+/* CONTROLS */
+#vocab-controls { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; gap: 8px; }
+.ctrl-btn { background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.14); color: #FBF1D7; border-radius: 50px; padding: 10px 18px; font-family: ‘DM Sans’, -apple-system, sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; -webkit-user-select: none; user-select: none; transition: background 0.14s, transform 0.1s; }
+.ctrl-btn:active { transform: scale(0.93); background: rgba(255,255,255,0.16); }
+.ctrl-btn-play { background: #FFA6A0; border-color: #FFA6A0; flex: 1; max-width: 110px; text-align: center; color: #3d2828; font-weight: 600; }
+.ctrl-btn-play:active { background: #e8908a; }
+
+/* TAB BAR */
+#tab-bar { flex-shrink: 0; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(0,0,0,0.3); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding-bottom: env(safe-area-inset-bottom); }
+.tab-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0 8px; gap: 3px; cursor: pointer; border: none; background: none; color: rgba(255,255,255,0.35); font-family: ‘DM Sans’, -apple-system, sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.18s; -webkit-user-select: none; user-select: none; }
+.tab-btn.active { color: #FFD9A3; }
+.tab-btn .tab-icon { font-size: 1.3rem; line-height: 1; }
+
+/* VOCAB PANEL */
+#vocab-panel { flex: 1; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+
+/* VIDEO PANEL */
+#video-panel { flex: 1; display: none; flex-direction: column; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px 14px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); gap: 14px; }
+#video-panel.active { display: flex; }
+.video-label { font-family: ‘Playfair Display’, Georgia, serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+.video-sub { font-size: 0.72rem; opacity: 0.38; letter-spacing: 0.04em; margin-bottom: 10px; }
+.video-wrap { width: 100%; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+.video-wrap video { width: 100%; display: block; max-height: 55vh; object-fit: contain; background: #000; }
+.video-tip { background: rgba(251,241,215,0.05); border-left: 3px solid #FFD9A3; border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 0.75rem; opacity: 0.6; line-height: 1.6; }
+
+/* SPLASH */
+#title-screen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(175deg, #2a3d36 0%, #1c2c26 100%); z-index: 50; padding: 40px 28px; padding-bottom: calc(40px + env(safe-area-inset-bottom)); transition: opacity 0.5s, transform 0.5s; text-align: center; }
+#title-screen.hidden { opacity: 0; transform: scale(0.96); pointer-events: none; }
+.splash-flag { font-size: 3.6rem; margin-bottom: 18px; }
+.splash-title { font-family: ‘Playfair Display’, Georgia, serif; font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 10px; }
+.splash-title span { color: #FFA6A0; }
+.splash-sub { font-size: 0.78rem; opacity: 0.4; letter-spacing: 0.06em; margin-bottom: 28px; }
+.scene-pills { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-bottom: 30px; }
+.pill { background: rgba(111,153,134,0.18); border: 1px solid rgba(111,153,134,0.3); border-radius: 50px; padding: 5px 12px; font-size: 0.72rem; opacity: 0.85; }
+.start-btn { background: #FFA6A0; border: none; color: #3a2020; padding: 15px 48px; border-radius: 50px; font-family: ‘DM Sans’, -apple-system, sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; -webkit-user-select: none; user-select: none; transition: transform 0.12s, background 0.12s; }
+.start-btn:active { transform: scale(0.95); background: #e8908a; }
+.install-hint { margin-top: 18px; font-size: 0.67rem; opacity: 0.28; line-height: 1.6; }
+.install-hint strong { opacity: 0.6; }
+
+/* SWIPE HINT */
+#swipe-hint { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; font-size: 0.68rem; opacity: 0; letter-spacing: 0.08em; pointer-events: none; animation: hintFade 3s ease-out 1.5s forwards; }
+@keyframes hintFade { 0% { opacity: 0; } 20% { opacity: 0.4; } 80% { opacity: 0.4; } 100% { opacity: 0; } }
+
+/* iOS INSTALL BANNER */
+#install-banner {
+position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+background: linear-gradient(135deg, #2a3d36 0%, #1c2c26 100%);
+border-top: 1px solid rgba(255,217,163,0.25);
+padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+display: flex; align-items: center; gap: 12px;
+transform: translateY(100%);
+transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+box-shadow: 0 -8px 32px rgba(0,0,0,0.4);
+}
+#install-banner.show { transform: translateY(0); }
+.banner-icon { font-size: 2.2rem; flex-shrink: 0; }
+.banner-text { flex: 1; min-width: 0; }
+.banner-title { font-family: ‘Playfair Display’, Georgia, serif; font-size: 0.9rem; font-weight: 700; color: #FBF1D7; margin-bottom: 3px; }
+.banner-sub { font-size: 0.68rem; opacity: 0.5; line-height: 1.5; }
+.banner-sub strong { color: #FFD9A3; opacity: 1; }
+.banner-close { background: none; border: none; color: rgba(251,241,215,0.3); font-size: 1.2rem; cursor: pointer; padding: 4px; flex-shrink: 0; line-height: 1; }
+.banner-close:active { color: rgba(251,241,215,0.8); }
+
+@media (display-mode: fullscreen), (display-mode: standalone) {
+#install-banner { display: none !important; }
+body { background: #2a3d36; }
+}
+#toast { position: fixed; bottom: calc(72px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%) translateY(16px); background: rgba(42,61,54,0.97); border: 1px solid rgba(251,241,215,0.1); color: #FBF1D7; padding: 8px 18px; border-radius: 20px; font-size: 0.76rem; opacity: 0; transition: opacity 0.28s, transform 0.28s; z-index: 200; white-space: nowrap; pointer-events: none; }
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+
+</head>
+<body>
+<div id="app">
+
+  <!-- SPLASH -->
+
+  <div id="title-screen">
+    <div class="splash-flag">🇮🇹</div>
+    <h1 class="splash-title">意大利语<br><span>入门词汇</span></h1>
+    <p class="splash-sub">9 个场景 · 60+ 词汇 · 音标 · 发音</p>
+    <div class="scene-pills">
+      <span class="pill">🌅 问候道别</span>
+      <span class="pill">💬 日常对话</span>
+      <span class="pill">👤 自我介绍</span>
+      <span class="pill">👨‍👩‍👦 家庭词汇</span>
+      <span class="pill">🍦 食物场景</span>
+      <span class="pill">🔗 语法小结</span>
+      <span class="pill">🧑‍🤝‍🧑 他 / 她 · 形容词</span>
+      <span class="pill">🏛️ 地点 & c'è</span>
+      <span class="pill">🗣️ 学习 & 语言</span>
+    </div>
+    <button class="start-btn" onclick="startShow()">开始学习 ▶</button>
+    <p class="install-hint" id="install-hint-text">
+      <strong>📱 添加到主屏幕：</strong><br>
+      点击底部 <strong>分享</strong> 按钮 → <strong>添加到主屏幕</strong><br>
+      即可像 App 一样全屏使用 ✨
+    </p>
+  </div>
+
+  <!-- iOS INSTALL BANNER -->
+
+  <div id="install-banner">
+    <div class="banner-icon">🇮🇹</div>
+    <div class="banner-text">
+      <div class="banner-title">添加到主屏幕</div>
+      <div class="banner-sub">点 <strong>分享 ⬆</strong> → <strong>添加到主屏幕</strong>，全屏使用</div>
+    </div>
+    <button class="banner-close" onclick="dismissBanner()">✕</button>
+  </div>
+
+  <!-- VOCAB PANEL -->
+
+  <div id="vocab-panel">
+
+```
+<!-- TOP NAV -->
+<div id="topnav">
+  <span id="nav-flag">🇮🇹</span>
+  <span id="nav-title">意大利语入门</span>
+  <div id="autoplay-ring">
+    <svg viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="14" stroke-width="2.5" stroke="rgba(255,255,255,0.1)"/>
+      <circle id="ring-circle" cx="17" cy="17" r="14" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>
+
+<!-- DOTS -->
+<div id="dots-row"></div>
+
+<!-- SCENES -->
+<div id="stage-wrap">
+  <div id="swipe-hint">← 左右滑动切换场景 →</div>
+
+  <!-- Scene 1: Greetings -->
+  <div class="scene scene-greeting" id="scene-0">
+    <div class="scene-header"><span class="scene-icon">🌅</span><span class="scene-category">问候 & 道别</span><span class="scene-num">01 / 09</span></div>
+    <div class="vocab-grid">
+      <div class="vocab-card" style="animation-delay:.04s"><span class="speak-badge">🔊</span><span class="vocab-it">Salve</span><span class="vocab-pron">/ SAL-veh /</span><span class="vocab-zh">你好（正式）</span></div>
+      <div class="vocab-card" style="animation-delay:.08s"><span class="speak-badge">🔊</span><span class="vocab-it">Buongiorno</span><span class="vocab-pron">/ bwon-JOR-no /</span><span class="vocab-zh">早上好 / 你好</span></div>
+      <div class="vocab-card" style="animation-delay:.12s"><span class="speak-badge">🔊</span><span class="vocab-it">Buonasera</span><span class="vocab-pron">/ bwon-ah-SEH-rah /</span><span class="vocab-zh">晚安 / 晚上好</span></div>
+      <div class="vocab-card" style="animation-delay:.16s"><span class="speak-badge">🔊</span><span class="vocab-it">Arrivederci</span><span class="vocab-pron">/ ar-ri-veh-DER-chi /</span><span class="vocab-zh">再见（正式）</span></div>
+      <div class="vocab-card" style="animation-delay:.20s"><span class="speak-badge">🔊</span><span class="vocab-it">A presto</span><span class="vocab-pron">/ ah PRES-to /</span><span class="vocab-zh">回头见</span></div>
+    </div>
+    <div class="example-box">
+      <div class="ex-line" data-speak="Buongiorno! Come va?"><div class="ex-line-text"><div class="it">— Buongiorno! Come va?</div><div class="zh">早上好！最近怎么样？</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Bene, grazie. Arrivederci!"><div class="ex-line-text"><div class="it">— Bene, grazie. Arrivederci!</div><div class="zh">很好，谢谢。再见！</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 2: Daily Chat -->
+  <div class="scene scene-chat" id="scene-1">
+    <div class="scene-header"><span class="scene-icon">💬</span><span class="scene-category">日常对话</span><span class="scene-num">02 / 09</span></div>
+    <div class="vocab-grid">
+      <div class="vocab-card" style="animation-delay:.04s"><span class="speak-badge">🔊</span><span class="vocab-it">Come va?</span><span class="vocab-pron">/ KO-meh vah /</span><span class="vocab-zh">最近怎么样？</span></div>
+      <div class="vocab-card" style="animation-delay:.08s"><span class="speak-badge">🔊</span><span class="vocab-it">Bene</span><span class="vocab-pron">/ BEH-neh /</span><span class="vocab-zh">好 / 很好</span></div>
+      <div class="vocab-card" style="animation-delay:.12s"><span class="speak-badge">🔊</span><span class="vocab-it">Perfetto</span><span class="vocab-pron">/ per-FET-to /</span><span class="vocab-zh">好极了</span></div>
+      <div class="vocab-card" style="animation-delay:.16s"><span class="speak-badge">🔊</span><span class="vocab-it">Sì</span><span class="vocab-pron">/ sì /</span><span class="vocab-zh">是的</span></div>
+      <div class="vocab-card" style="animation-delay:.20s"><span class="speak-badge">🔊</span><span class="vocab-it">Per favore</span><span class="vocab-pron">/ per fah-VO-reh /</span><span class="vocab-zh">请</span></div>
+      <div class="vocab-card" style="animation-delay:.24s"><span class="speak-badge">🔊</span><span class="vocab-it">Grazie</span><span class="vocab-pron">/ GRAT-tsyeh /</span><span class="vocab-zh">谢谢</span></div>
+      <div class="vocab-card" style="animation-delay:.28s"><span class="speak-badge">🔊</span><span class="vocab-it">Piacere</span><span class="vocab-pron">/ pyah-CHEH-reh /</span><span class="vocab-zh">很高兴认识你</span></div>
+    </div>
+    <div class="example-box">
+      <div class="ex-line" data-speak="Come va? Perfetto, grazie! Piacere."><div class="ex-line-text"><div class="it">— Come va? — Perfetto, grazie! Piacere.</div><div class="zh">最近怎么样？—— 好极了！很高兴认识你。</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 3: Intro -->
+  <div class="scene scene-intro" id="scene-2">
+    <div class="scene-header"><span class="scene-icon">👤</span><span class="scene-category">自我介绍 & 城市</span><span class="scene-num">03 / 09</span></div>
+    <div class="vocab-grid">
+      <div class="vocab-card" style="animation-delay:.04s"><span class="speak-badge">🔊</span><span class="vocab-it">Io sono XX</span><span class="vocab-pron">/ EE-oh SO-no /</span><span class="vocab-zh">我是XX</span></div>
+      <div class="vocab-card" style="animation-delay:.08s"><span class="speak-badge">🔊</span><span class="vocab-it">Io sono di Roma</span><span class="vocab-pron">/ EE-oh SO-no di RO-ma /</span><span class="vocab-zh">我来自罗马</span></div>
+      <div class="vocab-card" style="animation-delay:.12s"><span class="speak-badge">🔊</span><span class="vocab-it">vero?</span><span class="vocab-pron">/ VEH-ro /</span><span class="vocab-zh">对吗？</span></div>
+      <div class="vocab-card" style="animation-delay:.16s"><span class="speak-badge">🔊</span><span class="vocab-it">Roma</span><span class="vocab-pron">/ RO-ma /</span><span class="vocab-zh">罗马</span></div>
+      <div class="vocab-card" style="animation-delay:.20s"><span class="speak-badge">🔊</span><span class="vocab-it">Londra</span><span class="vocab-pron">/ LON-dra /</span><span class="vocab-zh">伦敦</span></div>
+      <div class="vocab-card" style="animation-delay:.24s"><span class="speak-badge">🔊</span><span class="vocab-it">Milano</span><span class="vocab-pron">/ mi-LA-no /</span><span class="vocab-zh">米兰</span></div>
+      <div class="vocab-card" style="animation-delay:.28s"><span class="speak-badge">🔊</span><span class="vocab-it">Berlino</span><span class="vocab-pron">/ ber-LI-no /</span><span class="vocab-zh">柏林</span></div>
+    </div>
+    <div class="example-box">
+      <div class="ex-line" data-speak="Tu sei di Roma, vero? Sì, io sono di Roma."><div class="ex-line-text"><div class="it">— Tu sei di Roma, vero? — Sì, io sono di Roma.</div><div class="zh">你来自罗马，对吗？—— 是的。</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="No, Leo è di Berlino."><div class="ex-line-text"><div class="it">— No, Leo è di Berlino.</div><div class="zh">不是，Leo 来自柏林。</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 4: Family -->
+  <div class="scene scene-family" id="scene-3">
+    <div class="scene-header"><span class="scene-icon">👨‍👩‍👦</span><span class="scene-category">家庭词汇</span><span class="scene-num">04 / 09</span></div>
+    <div class="vocab-grid">
+      <div class="vocab-card" style="animation-delay:.04s"><span class="speak-badge">🔊</span><span class="vocab-it">Figlio</span><span class="vocab-pron">/ FI-lyo /</span><span class="vocab-zh">儿子</span></div>
+      <div class="vocab-card" style="animation-delay:.08s"><span class="speak-badge">🔊</span><span class="vocab-it">Una figlia</span><span class="vocab-pron">/ OO-na FI-lya /</span><span class="vocab-zh">一个女儿</span></div>
+      <div class="vocab-card" style="animation-delay:.12s"><span class="speak-badge">🔊</span><span class="vocab-it">Fratello</span><span class="vocab-pron">/ fra-TEL-lo /</span><span class="vocab-zh">兄弟</span></div>
+      <div class="vocab-card" style="animation-delay:.16s"><span class="speak-badge">🔊</span><span class="vocab-it">Una sorella</span><span class="vocab-pron">/ OO-na so-REL-la /</span><span class="vocab-zh">一个姐姐 / 妹妹</span></div>
+      <div class="vocab-card" style="animation-delay:.20s"><span class="speak-badge">🔊</span><span class="vocab-it">Un ragazzo</span><span class="vocab-pron">/ oon ra-GAT-so /</span><span class="vocab-zh">一个男朋友</span></div>
+      <div class="vocab-card" style="animation-delay:.24s"><span class="speak-badge">🔊</span><span class="vocab-it">Ragazza</span><span class="vocab-pron">/ ra-GAT-sa /</span><span class="vocab-zh">女朋友 / 女孩</span></div>
+      <div class="vocab-card" style="animation-delay:.28s"><span class="speak-badge">🔊</span><span class="vocab-it">Io ho un figlio</span><span class="vocab-pron">/ EE-oh o oon FI-lyo /</span><span class="vocab-zh">我有一个儿子</span></div>
+      <div class="vocab-card" style="animation-delay:.32s"><span class="speak-badge">🔊</span><span class="vocab-it">Io ho una sorella</span><span class="vocab-pron">/ EE-oh o OO-na so-REL-la /</span><span class="vocab-zh">我有一个姐姐</span></div>
+      <div class="vocab-card" style="animation-delay:.36s"><span class="speak-badge">🔊</span><span class="vocab-it">E tu?</span><span class="vocab-pron">/ eh TOO /</span><span class="vocab-zh">你呢？</span></div>
+      <div class="vocab-card" style="animation-delay:.40s"><span class="speak-badge">🔊</span><span class="vocab-it">Un / Una</span><span class="vocab-pron">/ oon / OO-na /</span><span class="vocab-zh">一个（冠词）</span></div>
+    </div>
+    <div class="example-box">
+      <div class="ex-line" data-speak="Io ho una figlia e una sorella. E tu?"><div class="ex-line-text"><div class="it">— Io ho una figlia e una sorella. E tu?</div><div class="zh">我有一个女儿和一个姐姐。你呢？</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Io ho un ragazzo. Si chiama Leo."><div class="ex-line-text"><div class="it">— Io ho un ragazzo. Si chiama Leo.</div><div class="zh">我有一个男朋友，他叫 Leo。</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 5: Food -->
+  <div class="scene scene-food" id="scene-4">
+    <div class="scene-header"><span class="scene-icon">🍦</span><span class="scene-category">食物场景</span><span class="scene-num">05 / 09</span></div>
+    <div class="vocab-grid">
+      <div class="vocab-card" style="animation-delay:.04s"><span class="speak-badge">🔊</span><span class="vocab-it">Gelato</span><span class="vocab-pron">/ jeh-LA-to /</span><span class="vocab-zh">冰淇淋</span></div>
+      <div class="vocab-card" style="animation-delay:.08s"><span class="speak-badge">🔊</span><span class="vocab-it">Un gelato</span><span class="vocab-pron">/ oon jeh-LA-to /</span><span class="vocab-zh">一个冰淇淋</span></div>
+      <div class="vocab-card" style="animation-delay:.12s"><span class="speak-badge">🔊</span><span class="vocab-it">Cornetto</span><span class="vocab-pron">/ kor-NET-to /</span><span class="vocab-zh">意大利可颂</span></div>
+      <div class="vocab-card" style="animation-delay:.16s"><span class="speak-badge">🔊</span><span class="vocab-it">Per favore</span><span class="vocab-pron">/ per fah-VO-reh /</span><span class="vocab-zh">请（点餐）</span></div>
+    </div>
+    <div class="example-box">
+      <div class="ex-line" data-speak="Un gelato e un cornetto, per favore!"><div class="ex-line-text"><div class="it">— Un gelato e un cornetto, per favore!</div><div class="zh">请给我冰淇淋和可颂！</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Perfetto, grazie!"><div class="ex-line-text"><div class="it">— Perfetto, grazie!</div><div class="zh">好极了，谢谢！</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 6: Grammar -->
+  <div class="scene scene-grammar" id="scene-5">
+    <div class="scene-header"><span class="scene-icon">🔗</span><span class="scene-category">连接词 & 语法</span><span class="scene-num">06 / 09</span></div>
+    <div class="vocab-grid">
+      <div class="vocab-card" style="animation-delay:.04s"><span class="speak-badge">🔊</span><span class="vocab-it">e（和）</span><span class="vocab-pron">/ eh /</span><span class="vocab-zh">…和…</span></div>
+      <div class="vocab-card" style="animation-delay:.08s"><span class="speak-badge">🔊</span><span class="vocab-it">o（或）</span><span class="vocab-pron">/ oh /</span><span class="vocab-zh">…或者…</span></div>
+      <div class="vocab-card" style="animation-delay:.12s"><span class="speak-badge">🔊</span><span class="vocab-it">è</span><span class="vocab-pron">/ è /（他/她 是）</span><span class="vocab-zh">第三人称 是</span></div>
+      <div class="vocab-card" style="animation-delay:.16s"><span class="speak-badge">🔊</span><span class="vocab-it">sono</span><span class="vocab-pron">/ SO-no /</span><span class="vocab-zh">io sono = 我是</span></div>
+      <div class="vocab-card" style="animation-delay:.20s"><span class="speak-badge">🔊</span><span class="vocab-it">ho</span><span class="vocab-pron">/ oh /（h 不发音）</span><span class="vocab-zh">io ho = 我有</span></div>
+      <div class="vocab-card" style="animation-delay:.24s"><span class="speak-badge">🔊</span><span class="vocab-it">sei</span><span class="vocab-pron">/ SEH-i /</span><span class="vocab-zh">tu sei = 你是</span></div>
+    </div>
+    <div class="example-box">
+      <div class="ex-line" data-speak="Gelato o cornetto? Gelato e cornetto, per favore!"><div class="ex-line-text"><div class="it">— Gelato o cornetto? — Gelato e cornetto!</div><div class="zh">冰淇淋还是可颂？—— 都要！</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Leo è di Berlino. Io sono di Milano."><div class="ex-line-text"><div class="it">— Leo è di Berlino. Io sono di Milano.</div><div class="zh">Leo 来自柏林。我来自米兰。</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 7: Pronouns & Adjectives -->
+  <div class="scene scene-pronoun" id="scene-6">
+    <div class="scene-header"><span class="scene-icon">🧑‍🤝‍🧑</span><span class="scene-category">他 / 她 · 形容词变形</span><span class="scene-num">07 / 09</span></div>
+    <div class="vocab-grid">
+
+      <div class="vocab-card pair-card" style="animation-delay:.04s">
+        <div class="pair-half" data-speak-half="Lui">
+          <span class="vocab-it">Lui</span>
+          <span class="vocab-pron">/ LOO-i /</span>
+          <span class="pair-label masc">👦 他（男）</span>
+        </div>
+        <div class="pair-half" data-speak-half="Lei">
+          <span class="vocab-it">Lei</span>
+          <span class="vocab-pron">/ LAY /</span>
+          <span class="pair-label fem">👧 她（女）</span>
+        </div>
+      </div>
+
+      <div class="vocab-card pair-card" style="animation-delay:.08s">
+        <div class="pair-half" data-speak-half="Lui è timido">
+          <span class="vocab-it">timido</span>
+          <span class="vocab-pron">/ TI-mi-do /</span>
+          <span class="pair-label masc">👦 男性形</span>
+          <span class="vocab-zh">害羞的</span>
+        </div>
+        <div class="pair-half" data-speak-half="Lei è timida">
+          <span class="vocab-it">timida</span>
+          <span class="vocab-pron">/ TI-mi-da /</span>
+          <span class="pair-label fem">👧 女性形</span>
+          <span class="vocab-zh">害羞的</span>
+        </div>
+      </div>
+
+      <div class="vocab-card pair-card" style="animation-delay:.12s">
+        <div class="pair-half" data-speak-half="Lui è simpatico">
+          <span class="vocab-it">simpatico</span>
+          <span class="vocab-pron">/ sim-PA-ti-ko /</span>
+          <span class="pair-label masc">👦 男性形</span>
+          <span class="vocab-zh">可爱友善的</span>
+        </div>
+        <div class="pair-half" data-speak-half="Lei è simpatica">
+          <span class="vocab-it">simpatica</span>
+          <span class="vocab-pron">/ sim-PA-ti-ka /</span>
+          <span class="pair-label fem">👧 女性形</span>
+          <span class="vocab-zh">可爱友善的</span>
+        </div>
+      </div>
+
+      <div class="vocab-card pair-card" style="animation-delay:.16s">
+        <div class="pair-half" data-speak-half="Lui è serio">
+          <span class="vocab-it">serio</span>
+          <span class="vocab-pron">/ SEH-ryo /</span>
+          <span class="pair-label masc">👦 男性形</span>
+          <span class="vocab-zh">严肃认真的</span>
+        </div>
+        <div class="pair-half" data-speak-half="Lei è seria">
+          <span class="vocab-it">seria</span>
+          <span class="vocab-pron">/ SEH-rya /</span>
+          <span class="pair-label fem">👧 女性形</span>
+          <span class="vocab-zh">严肃认真的</span>
+        </div>
+      </div>
+
+      <div class="vocab-card pair-card" style="animation-delay:.20s">
+        <div class="pair-half" data-speak-half="Lui è allegro">
+          <span class="vocab-it">allegro</span>
+          <span class="vocab-pron">/ al-LEH-gro /</span>
+          <span class="pair-label masc">👦 男性形</span>
+          <span class="vocab-zh">开朗快乐的</span>
+        </div>
+        <div class="pair-half" data-speak-half="Lei è allegra">
+          <span class="vocab-it">allegra</span>
+          <span class="vocab-pron">/ al-LEH-gra /</span>
+          <span class="pair-label fem">👧 女性形</span>
+          <span class="vocab-zh">开朗快乐的</span>
+        </div>
+      </div>
+
+      <div class="vocab-card allora-card" style="animation-delay:.24s">
+        <span class="speak-badge">🔊</span>
+        <div class="allora-content">
+          <div class="allora-row1">
+            <span class="vocab-it">Allora</span>
+            <span class="vocab-zh">那么 / 好吧 / 所以（转折词）</span>
+          </div>
+          <span class="vocab-pron">/ al-LO-ra /</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="grammar-note">
+      💡 <strong>规律：</strong>意大利语形容词跟名词的性别变化 — 男性以 <strong>-o</strong> 结尾，女性变成 <strong>-a</strong>。
+    </div>
+
+    <div class="example-box">
+      <div class="ex-line" data-speak="Lui è simpatico e allegro."><div class="ex-line-text"><div class="it">— Lui è simpatico e allegro.</div><div class="zh">他很友善，也很开朗。</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Lei è timida ma seria."><div class="ex-line-text"><div class="it">— Lei è timida ma seria.</div><div class="zh">她害羞但很认真。</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Allora, un gelato per favore!"><div class="ex-line-text"><div class="it">— Allora, un gelato per favore!</div><div class="zh">好那么，来一个冰淇淋！</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 8: Places & c'è -->
+  <div class="scene scene-places" id="scene-7">
+    <div class="scene-header"><span class="scene-icon">🏛️</span><span class="scene-category">地点 & c'è</span><span class="scene-num">08 / 09</span></div>
+    <div class="vocab-grid">
+
+      <div class="vocab-card ce-card" style="animation-delay:.04s">
+        <span class="speak-badge">🔊</span>
+        <span class="vocab-it">c'è una banca qui</span>
+        <span class="vocab-pron">/ cheh OO-na BAN-ka KWEE /</span>
+        <span class="vocab-zh">这里有一个银行</span>
+      </div>
+      <div class="vocab-card ce-card" style="animation-delay:.07s">
+        <span class="speak-badge">🔊</span>
+        <span class="vocab-it">c'è una banca lì</span>
+        <span class="vocab-pron">/ cheh OO-na BAN-ka LEE /</span>
+        <span class="vocab-zh">那里有一个银行</span>
+      </div>
+
+      <div class="vocab-card section-label" style="animation-delay:.10s">
+        <span class="label-badge">Un +</span>
+        <span class="label-note">阳性名词</span>
+      </div>
+
+      <div class="vocab-card" style="animation-delay:.13s"><span class="speak-badge">🔊</span><span class="vocab-it">Parco</span><span class="vocab-pron">/ PAR-ko /</span><span class="vocab-zh">公园</span></div>
+      <div class="vocab-card" style="animation-delay:.16s"><span class="speak-badge">🔊</span><span class="vocab-it">Teatro</span><span class="vocab-pron">/ teh-AH-tro /</span><span class="vocab-zh">剧院</span></div>
+      <div class="vocab-card" style="animation-delay:.19s"><span class="speak-badge">🔊</span><span class="vocab-it">Museo</span><span class="vocab-pron">/ mu-ZEH-o /</span><span class="vocab-zh">博物馆</span></div>
+      <div class="vocab-card" style="animation-delay:.22s"><span class="speak-badge">🔊</span><span class="vocab-it">Panificio</span><span class="vocab-pron">/ pa-ni-FEE-cho /</span><span class="vocab-zh">面包店</span></div>
+      <div class="vocab-card" style="animation-delay:.25s"><span class="speak-badge">🔊</span><span class="vocab-it">Negozio</span><span class="vocab-pron">/ neh-GO-tsyo /</span><span class="vocab-zh">商店</span></div>
+
+      <div class="vocab-card section-label" style="animation-delay:.28s">
+        <span class="label-badge">特殊</span>
+        <span class="label-note">不变词尾，直接用 Un</span>
+      </div>
+
+      <div class="vocab-card" style="animation-delay:.31s"><span class="speak-badge">🔊</span><span class="special-tag">特殊</span><span class="vocab-it">Ristorante</span><span class="vocab-pron">/ ri-sto-RAN-teh /</span><span class="vocab-zh">餐厅</span></div>
+      <div class="vocab-card" style="animation-delay:.34s"><span class="speak-badge">🔊</span><span class="special-tag">特殊</span><span class="vocab-it">Hotel</span><span class="vocab-pron">/ o-TEL /</span><span class="vocab-zh">酒店</span></div>
+
+      <div class="vocab-card section-label" style="animation-delay:.37s">
+        <span class="label-badge">Una +</span>
+        <span class="label-note">阴性名词</span>
+      </div>
+
+      <div class="vocab-card" style="animation-delay:.40s"><span class="speak-badge">🔊</span><span class="vocab-it">Scuola</span><span class="vocab-pron">/ SKWO-la /</span><span class="vocab-zh">学校</span></div>
+      <div class="vocab-card" style="animation-delay:.43s"><span class="speak-badge">🔊</span><span class="vocab-it">Biblioteca</span><span class="vocab-pron">/ bi-blio-TEH-ka /</span><span class="vocab-zh">图书馆</span></div>
+      <div class="vocab-card" style="animation-delay:.46s"><span class="speak-badge">🔊</span><span class="vocab-it">Piazza</span><span class="vocab-pron">/ PYAT-tsa /</span><span class="vocab-zh">广场</span></div>
+      <div class="vocab-card" style="animation-delay:.49s"><span class="speak-badge">🔊</span><span class="vocab-it">Gelateria</span><span class="vocab-pron">/ jeh-la-teh-REE-a /</span><span class="vocab-zh">冰淇淋店</span></div>
+
+    </div>
+
+    <div class="example-box">
+      <div class="ex-line" data-speak="C'è un parco qui vicino?"><div class="ex-line-text"><div class="it">— C'è un parco qui vicino?</div><div class="zh">附近有公园吗？</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Sì, c'è una gelateria e un museo lì!"><div class="ex-line-text"><div class="it">— Sì, c'è una gelateria e un museo lì!</div><div class="zh">有！那里有冰淇淋店和博物馆！</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Perfetto! Allora andiamo!"><div class="ex-line-text"><div class="it">— Perfetto! Allora andiamo!</div><div class="zh">好极了！那我们走吧！</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+  <!-- Scene 9: Study & Languages (NEW) -->
+  <div class="scene scene-study" id="scene-8">
+    <div class="scene-header"><span class="scene-icon">🗣️</span><span class="scene-category">学习 & 语言</span><span class="scene-num">09 / 09</span></div>
+    <div class="vocab-grid">
+
+      <!-- Io studio / Tu studi -->
+      <div class="vocab-card pair-card" style="animation-delay:.04s">
+        <div class="pair-half" data-speak-half="Io studio">
+          <span class="vocab-it">studio</span>
+          <span class="vocab-pron">/ STOO-dyo /</span>
+          <span class="pair-label first-p">👤 io</span>
+          <span class="vocab-zh">我学习</span>
+        </div>
+        <div class="pair-half" data-speak-half="Tu studi">
+          <span class="vocab-it">studi</span>
+          <span class="vocab-pron">/ STOO-di /</span>
+          <span class="pair-label second-p">👥 tu</span>
+          <span class="vocab-zh">你学习</span>
+        </div>
+      </div>
+
+      <!-- Io parlo / Tu parli -->
+      <div class="vocab-card pair-card" style="animation-delay:.08s">
+        <div class="pair-half" data-speak-half="Io parlo">
+          <span class="vocab-it">parlo</span>
+          <span class="vocab-pron">/ PAR-lo /</span>
+          <span class="pair-label first-p">👤 io</span>
+          <span class="vocab-zh">我说</span>
+        </div>
+        <div class="pair-half" data-speak-half="Tu parli">
+          <span class="vocab-it">parli</span>
+          <span class="vocab-pron">/ PAR-li /</span>
+          <span class="pair-label second-p">👥 tu</span>
+          <span class="vocab-zh">你说</span>
+        </div>
+      </div>
+
+      <!-- Con -->
+      <div class="vocab-card con-card" style="animation-delay:.12s">
+        <span class="speak-badge">🔊</span>
+        <span class="vocab-it">con</span>
+        <div class="con-detail">
+          <span class="vocab-pron">/ kon /</span>
+          <span class="vocab-zh">和… 一起 / 跟某人</span>
+        </div>
+      </div>
+
+      <!-- Languages section label -->
+      <div class="vocab-card section-label" style="animation-delay:.16s">
+        <span class="label-badge">语言</span>
+        <span class="label-note">parlo + 语言名</span>
+      </div>
+
+      <!-- Language cards -->
+      <div class="vocab-card" style="animation-delay:.20s"><span class="speak-badge">🔊</span><span class="vocab-it">Italiano</span><span class="vocab-pron">/ i-tal-YA-no /</span><span class="vocab-zh">意大利语</span></div>
+      <div class="vocab-card" style="animation-delay:.23s"><span class="speak-badge">🔊</span><span class="vocab-it">Cinese</span><span class="vocab-pron">/ chi-NEH-zeh /</span><span class="vocab-zh">中文</span></div>
+      <div class="vocab-card" style="animation-delay:.26s"><span class="speak-badge">🔊</span><span class="vocab-it">Inglese</span><span class="vocab-pron">/ in-GLEH-zeh /</span><span class="vocab-zh">英语</span></div>
+      <div class="vocab-card" style="animation-delay:.29s"><span class="speak-badge">🔊</span><span class="vocab-it">Francese</span><span class="vocab-pron">/ fran-CHEH-zeh /</span><span class="vocab-zh">法语</span></div>
+      <div class="vocab-card" style="animation-delay:.32s"><span class="speak-badge">🔊</span><span class="vocab-it">Tedesco</span><span class="vocab-pron">/ teh-DES-ko /</span><span class="vocab-zh">德语</span></div>
+      <div class="vocab-card" style="animation-delay:.35s"><span class="speak-badge">🔊</span><span class="vocab-it">Spagnolo</span><span class="vocab-pron">/ spa-NYO-lo /</span><span class="vocab-zh">西班牙语</span></div>
+
+      <!-- Subjects section label -->
+      <div class="vocab-card section-label" style="animation-delay:.38s">
+        <span class="label-badge">科目</span>
+        <span class="label-note">studio + 科目名</span>
+      </div>
+
+      <div class="vocab-card" style="animation-delay:.41s"><span class="speak-badge">🔊</span><span class="vocab-it">Arte</span><span class="vocab-pron">/ AR-teh /</span><span class="vocab-zh">艺术</span></div>
+      <div class="vocab-card" style="animation-delay:.44s"><span class="speak-badge">🔊</span><span class="vocab-it">Musica</span><span class="vocab-pron">/ MOO-zi-ka /</span><span class="vocab-zh">音乐</span></div>
+
+      <!-- Fantastico highlight card -->
+      <div class="vocab-card fantastico-card" style="animation-delay:.47s">
+        <span class="speak-badge">🔊</span>
+        <span class="vocab-it">Fantastico!</span>
+        <span class="vocab-pron">/ fan-TAS-ti-ko /</span>
+        <span class="vocab-zh">太棒了！（强烈称赞）</span>
+      </div>
+
+    </div>
+
+    <div class="grammar-note">
+      💡 <strong>-are 动词规律：</strong>io → <strong>-o</strong>，tu → <strong>-i</strong><br>
+      parl<strong>are</strong> → io parl<strong>o</strong> · tu parl<strong>i</strong> &nbsp;|&nbsp; studi<strong>are</strong> → io studi<strong>o</strong> · tu studi<strong>i</strong>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-line" data-speak="Io studio l'italiano con Leo."><div class="ex-line-text"><div class="it">— Io studio l'italiano con Leo.</div><div class="zh">我和 Leo 一起学意大利语。</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Tu parli cinese e inglese? Sì, fantastico!"><div class="ex-line-text"><div class="it">— Tu parli cinese e inglese? — Sì, fantastico!</div><div class="zh">你会说中文和英语？—— 是的，太棒了！</div></div><span class="ex-speak-btn">🔊</span></div>
+      <div class="ex-line" data-speak="Io studio arte e musica. Allora, bene!"><div class="ex-line-text"><div class="it">— Io studio arte e musica. — Allora, bene!</div><div class="zh">我学艺术和音乐。—— 那真好！</div></div><span class="ex-speak-btn">🔊</span></div>
+    </div>
+  </div>
+
+</div><!-- /stage-wrap -->
+
+<!-- VOCAB CONTROLS -->
+<div id="vocab-controls">
+  <button class="ctrl-btn" onclick="prevScene()">← 上一</button>
+  <button class="ctrl-btn ctrl-btn-play" id="play-btn" onclick="toggleAuto()">▶ 自动</button>
+  <button class="ctrl-btn" onclick="nextScene()">下一 →</button>
+</div>
+```
+
+  </div><!-- /vocab-panel -->
+
+  <!-- VIDEO PANEL -->
+
+  <div id="video-panel">
+    <div class="video-label">🎬 真实生活一日游</div>
+    <div class="video-sub">开口说意大利语 · 场景视频</div>
+    <div class="video-wrap">
+      <video controls playsinline preload="metadata">
+        <source src="开口说意语_真实生活一日游.mp4" type="video/mp4">
+        您的浏览器不支持视频播放
+      </video>
+    </div>
+    <div class="video-tip">💡 建议先看视频了解场景，再回到「词汇」页点击卡片练习发音</div>
+  </div>
+
+  <!-- TAB BAR -->
+
+  <div id="tab-bar">
+    <button class="tab-btn active" id="tab-vocab" onclick="switchTab('vocab')">
+      <span class="tab-icon">📚</span><span>词汇</span>
+    </button>
+    <button class="tab-btn" id="tab-video" onclick="switchTab('video')">
+      <span class="tab-icon">🎬</span><span>视频</span>
+    </button>
+  </div>
+
+</div><!-- /app -->
+<div id="toast"></div>
+
+<script>
+const TOTAL = 9;
+const DURATION = 6500;
+let current = -1;
+let autoPlay = false;
+let timer = null;
+
+const dotsRow = document.getElementById('dots-row');
+for (let i = 0; i < TOTAL; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot';
+  d.onclick = () => { stopAuto(); goTo(i); };
+  dotsRow.appendChild(d);
+}
+const getDot = i => dotsRow.children[i];
+const getScene = i => document.getElementById('scene-' + i);
+
+function goTo(index, dir = 'left') {
+  if (index < 0 || index >= TOTAL) return;
+  if (current >= 0) {
+    const prev = getScene(current);
+    prev.classList.remove('active');
+    prev.classList.add(dir === 'left' ? 'exit-left' : 'exit-right');
+    setTimeout(() => prev.classList.remove('exit-left', 'exit-right'), 500);
+    getDot(current).classList.remove('active');
+  }
+  current = index;
+  const sc = getScene(current);
+  sc.classList.add('active');
+  getDot(current).classList.add('active');
+  sc.querySelectorAll('.vocab-card').forEach(c => {
+    c.style.animation = 'none'; void c.offsetWidth; c.style.animation = '';
+  });
+}
+
+function nextScene() { goTo(current < TOTAL - 1 ? current + 1 : 0, 'left'); }
+function prevScene() { if (current > 0) goTo(current - 1, 'right'); }
+
+function startShow() {
+  document.getElementById('title-screen').classList.add('hidden');
+  setTimeout(() => goTo(0), 480);
+}
+
+function startAuto() {
+  autoPlay = true;
+  document.getElementById('play-btn').textContent = '⏸ 暂停';
+  document.getElementById('autoplay-ring').classList.add('visible');
+  scheduleNext();
+}
+function stopAuto() {
+  autoPlay = false;
+  document.getElementById('play-btn').textContent = '▶ 自动';
+  document.getElementById('autoplay-ring').classList.remove('visible');
+  clearTimeout(timer); clearRing();
+}
+function toggleAuto() { autoPlay ? stopAuto() : startAuto(); }
+function scheduleNext() {
+  clearTimeout(timer); startRing();
+  timer = setTimeout(() => { nextScene(); if (autoPlay) scheduleNext(); }, DURATION);
+}
+
+const ringCircle = document.getElementById('ring-circle');
+const circ = 2 * Math.PI * 14;
+function startRing() {
+  ringCircle.style.strokeDasharray = circ;
+  ringCircle.style.transition = 'none';
+  ringCircle.style.strokeDashoffset = circ;
+  void ringCircle.offsetWidth;
+  ringCircle.style.transition = 'stroke-dashoffset ' + DURATION + 'ms linear';
+  ringCircle.style.strokeDashoffset = '0';
+  ringCircle.style.stroke = '#FFD9A3';
+}
+function clearRing() {
+  ringCircle.style.transition = 'none';
+  ringCircle.style.strokeDashoffset = circ;
+}
+
+let tx = 0, ty = 0;
+document.addEventListener('touchstart', e => {
+  if (e.target.closest('#stage-wrap')) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }
+}, { passive: true });
+document.addEventListener('touchend', e => {
+  if (!e.target.closest('#stage-wrap')) return;
+  const dx = e.changedTouches[0].clientX - tx;
+  const dy = e.changedTouches[0].clientY - ty;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 38) {
+    stopAuto(); dx < 0 ? nextScene() : prevScene();
+  }
+}, { passive: true });
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') { stopAuto(); nextScene(); }
+  if (e.key === 'ArrowLeft')  { stopAuto(); prevScene(); }
+  if (e.key === ' ') { e.preventDefault(); toggleAuto(); }
+});
+
+function switchTab(tab) {
+  const vocabPanel = document.getElementById('vocab-panel');
+  const videoPanel = document.getElementById('video-panel');
+  if (tab === 'vocab') {
+    vocabPanel.style.display = 'flex';
+    videoPanel.classList.remove('active');
+    document.getElementById('tab-vocab').classList.add('active');
+    document.getElementById('tab-video').classList.remove('active');
+  } else {
+    vocabPanel.style.display = 'none';
+    videoPanel.classList.add('active');
+    document.getElementById('tab-vocab').classList.remove('active');
+    document.getElementById('tab-video').classList.add('active');
+    stopAuto();
+  }
+}
+
+// TTS
+const synth = window.speechSynthesis;
+let itVoice = null;
+function loadVoices() {
+  const voices = synth.getVoices();
+  itVoice = voices.find(v => v.lang.startsWith('it')) || null;
+}
+loadVoices();
+if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadVoices;
+
+function speak(text, el) {
+  if (!synth) return;
+  const clean = text.replace(/（[^）]*）/g, '').replace(/\.\.\./g, '').trim();
+  if (!clean || clean === 'XX') return;
+  synth.cancel();
+  const u = new SpeechSynthesisUtterance(clean);
+  u.lang = 'it-IT'; u.rate = 0.84; u.pitch = 1;
+  if (itVoice) u.voice = itVoice;
+  el.classList.add('speaking');
+  u.onend = u.onerror = () => el.classList.remove('speaking');
+  synth.speak(u);
+}
+
+// Regular vocab cards (excludes pair-card, allora-card, con-card, fantastico-card)
+document.querySelectorAll('.vocab-card:not(.pair-card):not(.allora-card):not(.con-card):not(.fantastico-card)').forEach(card => {
+  card.addEventListener('click', e => {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = card.getBoundingClientRect(), sz = Math.max(rect.width, rect.height);
+    r.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rect.left-sz/2)+'px;top:'+(e.clientY-rect.top-sz/2)+'px';
+    card.appendChild(r); setTimeout(() => r.remove(), 600);
+    const it = card.querySelector('.vocab-it');
+    if (it) speak(it.textContent, card);
+  });
+});
+
+// Allora card
+document.querySelectorAll('.allora-card').forEach(card => {
+  card.addEventListener('click', e => {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = card.getBoundingClientRect(), sz = Math.max(rect.width, rect.height);
+    r.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rect.left-sz/2)+'px;top:'+(e.clientY-rect.top-sz/2)+'px';
+    card.appendChild(r); setTimeout(() => r.remove(), 600);
+    speak('Allora', card);
+  });
+});
+
+// Con card
+document.querySelectorAll('.con-card').forEach(card => {
+  card.addEventListener('click', e => {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = card.getBoundingClientRect(), sz = Math.max(rect.width, rect.height);
+    r.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rect.left-sz/2)+'px;top:'+(e.clientY-rect.top-sz/2)+'px';
+    card.appendChild(r); setTimeout(() => r.remove(), 600);
+    speak('con', card);
+  });
+});
+
+// Fantastico card
+document.querySelectorAll('.fantastico-card').forEach(card => {
+  card.addEventListener('click', e => {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = card.getBoundingClientRect(), sz = Math.max(rect.width, rect.height);
+    r.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rect.left-sz/2)+'px;top:'+(e.clientY-rect.top-sz/2)+'px';
+    card.appendChild(r); setTimeout(() => r.remove(), 600);
+    speak('Fantastico', card);
+  });
+});
+
+// Pair half cards
+document.querySelectorAll('.pair-half').forEach(half => {
+  half.addEventListener('click', e => {
+    e.stopPropagation();
+    const text = half.dataset.speakHalf;
+    if (!text || !synth) return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'it-IT'; u.rate = 0.84; u.pitch = 1;
+    if (itVoice) u.voice = itVoice;
+    half.classList.add('speaking');
+    u.onend = u.onerror = () => half.classList.remove('speaking');
+    synth.speak(u);
+  });
+});
+
+document.querySelectorAll('.ex-line').forEach(line => {
+  line.addEventListener('click', () => {
+    const text = line.dataset.speak;
+    if (!text || !synth) return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'it-IT'; u.rate = 0.82; u.pitch = 1;
+    if (itVoice) u.voice = itVoice;
+    line.classList.add('speaking');
+    u.onend = u.onerror = () => line.classList.remove('speaking');
+    synth.speak(u);
+  });
+});
+
+// iOS INSTALL BANNER
+function isInStandaloneMode() {
+  return window.navigator.standalone === true ||
+         window.matchMedia('(display-mode: standalone)').matches ||
+         window.matchMedia('(display-mode: fullscreen)').matches;
+}
+function isIOS() {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+function dismissBanner() {
+  document.getElementById('install-banner').classList.remove('show');
+  try { sessionStorage.setItem('banner-dismissed','1'); } catch(e){}
+}
+if (isIOS() && !isInStandaloneMode()) {
+  const dismissed = (()=>{ try{ return sessionStorage.getItem('banner-dismissed'); }catch(e){return null;} })();
+  if (!dismissed) setTimeout(() => document.getElementById('install-banner').classList.add('show'), 2000);
+} else {
+  const hint = document.getElementById('install-hint-text');
+  if (hint) hint.style.display = 'none';
+}
+</script>
+
+</body>
+</html>
